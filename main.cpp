@@ -9,7 +9,7 @@ private:
   char m_Sky[skySize][skySize]{};
 
 public:
-  Sky()
+  explicit Sky()
   {
     for (auto & i : m_Sky)
     {
@@ -22,14 +22,19 @@ public:
 
   void logSky()
   {
-    for (int i = 0; i < skySize; i++)
+    for (auto & i : m_Sky)
     {
-      for (int j = 0; j < skySize; j++)
+      for (char j : i)
       {
-        std::cout << m_Sky[i][j];
+        std::cout << j;
       }
       std::cout << std::endl;
     }
+  }
+
+  void nextFrame()
+  {
+    // move next frame
   }
 };
 
