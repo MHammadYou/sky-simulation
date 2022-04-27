@@ -1,21 +1,47 @@
 #include <iostream>
 
 
+class Cell
+{
+private:
+  std::string m_State = " . ";
+  int m_X, m_Y;
+
+public:
+
+  Cell(int x, int y)
+  {
+    m_X = x;
+    m_Y = y;
+  }
+
+  std::string getState()
+  {
+    return m_State;
+  }
+
+  void setState(const std::string& newState)
+  {
+    m_State = newState;
+  }
+};
+
+
 
 class Sky
 {
 private:
-  static const int skySize = 30;
-  std::string m_Sky[skySize][skySize]{};
+  static const int skySize = 25;
+  Cell* m_Sky[skySize][skySize]{};
 
 public:
   explicit Sky()
   {
-    for (auto & i : m_Sky)
+    for (int i = 0; i < skySize; i++)
     {
-      for (std::string & j : i)
+      for (int j = 0; j < skySize; j++)
       {
-        j = " . ";
+        m_Sky[i][j] = new Cell(i, j);
       }
     }
   }
@@ -31,9 +57,9 @@ public:
     for (auto & i : m_Sky)
     {
       std::cout << "|";
-      for (std::string j : i)
+      for (Cell* j : i)
       {
-        std::cout << j;
+        std::cout << j->getState();
       }
       std::cout << "|" << std::endl;
     }
