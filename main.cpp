@@ -46,6 +46,17 @@ public:
     }
   }
 
+  void createSun()
+  {
+    for (int i = 3; i < 6; i++)
+    {
+      for (int j = 3; j < 6; j++)
+      {
+        m_Sky[i][j]->setState(" # ");
+      }
+    }
+  }
+
   void logSky()
   {
     std::cout << " ";
@@ -80,6 +91,6 @@ public:
 
 int main() {
   Sky sky{};
-
+  sky.createSun();
   sky.logSky();
 }
