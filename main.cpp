@@ -7,6 +7,11 @@ private:
   std::string m_State = " . ";
   int m_X, m_Y;
 
+  void setState(const std::string& newState)
+  {
+    m_State = newState;
+  }
+
 public:
 
   Cell(int x, int y)
@@ -20,9 +25,14 @@ public:
     return m_State;
   }
 
-  void setState(const std::string& newState)
+  void makeDot()
   {
-    m_State = newState;
+    setState(" . ");
+  }
+
+  void makeHash()
+  {
+    setState(" # ");
   }
 };
 
@@ -52,7 +62,7 @@ public:
     {
       for (int j = 3; j < 6; j++)
       {
-        m_Sky[i][j]->setState(" # ");
+        m_Sky[i][j]->makeHash();
       }
     }
   }
@@ -89,7 +99,8 @@ public:
 };
 
 
-int main() {
+int main()
+{
   Sky sky{};
   sky.createSun();
   sky.logSky();
