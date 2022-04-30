@@ -54,6 +54,13 @@ public:
         m_Sky[i][j] = new Cell(i, j);
       }
     }
+
+    m_Sky[0][0]->makeHash();
+    m_Sky[0][1]->makeHash();
+    m_Sky[0][2]->makeHash();
+    m_Sky[0][3]->makeHash();
+    m_Sky[1][4]->makeHash();
+    m_Sky[0][6]->makeHash();
   }
 
   void createSun()
