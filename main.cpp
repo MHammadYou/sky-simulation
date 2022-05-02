@@ -1,4 +1,6 @@
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 
 class Cell
@@ -102,6 +104,18 @@ public:
   void nextFrame()
   {
     // move next frame
+    for (int i = 0; i < skySize; i++)
+    {
+      for (int j = 0; j < skySize; j++)
+      {
+        if (m_Sky[i][j]->getState() == " # ")
+        {
+          m_Sky[i][j]->makeDot();
+          m_Sky[i+1][j]->makeHash();
+        }
+      }
+    }
+    logSky();
   }
 };
 
@@ -111,4 +125,9 @@ int main()
   Sky sky{};
   sky.createSun();
   sky.logSky();
+  using namespace std::chrono_literals;
+  std::this_thread::sleep_for(2000ms);
+  sky.nextFrame();
+  std::this_thread::sleep_for(2000ms);
+  sky.nextFrame();
 }
