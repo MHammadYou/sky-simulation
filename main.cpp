@@ -43,7 +43,7 @@ public:
 class Sky
 {
 private:
-  static const int skySize = 25;
+  static const int skySize = 20;
   Cell* m_Sky[skySize][skySize]{};
 
 public:
@@ -104,14 +104,14 @@ public:
   void nextFrame()
   {
     // move next frame
-    for (int i = 0; i < skySize; i++)
+    for (int i = skySize - 1; i > -1 ; i--)
     {
-      for (int j = 0; j < skySize; j++)
+      for (int j = skySize - 1; j > -1; j--)
       {
         if (m_Sky[i][j]->getState() == " # ")
         {
           m_Sky[i][j]->makeDot();
-          m_Sky[i+1][j]->makeHash();
+          m_Sky[i][j+1]->makeHash();
         }
       }
     }
@@ -120,14 +120,23 @@ public:
 };
 
 
+void nextFrame(Sky* sky)
+{
+  using namespace std::chrono_literals;
+  std::this_thread::sleep_for(250ms);
+  sky->nextFrame();
+
+}
+
 int main()
 {
   Sky sky{};
   sky.createSun();
   sky.logSky();
-  using namespace std::chrono_literals;
-  std::this_thread::sleep_for(2000ms);
-  sky.nextFrame();
-  std::this_thread::sleep_for(2000ms);
-  sky.nextFrame();
+  for (int i = 0; i < 200; i++)
+  {
+    nextFrame(&sky);
+  }
 }
+
+
