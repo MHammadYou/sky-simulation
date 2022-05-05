@@ -110,6 +110,7 @@ public:
       {
         if (m_Sky[i][j]->getState() == " # ")
         {
+          // Fix starts move downward after one complete cycle
           m_Sky[i][j]->makeDot();
           m_Sky[i][j+1]->makeHash();
         }
@@ -118,15 +119,15 @@ public:
     logSky();
   }
 };
-
-
-void nextFrame(Sky* sky)
-{
-  using namespace std::chrono_literals;
-  std::this_thread::sleep_for(250ms);
-  sky->nextFrame();
-
-}
+//
+//
+//void nextFrame(Sky* sky)
+//{
+//  using namespace std::chrono_literals;
+//  std::this_thread::sleep_for(250ms);
+//  sky->nextFrame();
+//
+//}
 
 int main()
 {
@@ -135,7 +136,10 @@ int main()
   sky.logSky();
   for (int i = 0; i < 200; i++)
   {
-    nextFrame(&sky);
+//    nextFrame(&sky);
+    using namespace std::chrono_literals;
+    std::this_thread::sleep_for(250ms);
+    sky.nextFrame();
   }
 }
 
