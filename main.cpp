@@ -57,11 +57,11 @@ public:
       }
     }
 
-    m_Sky[0][0]->makeHash();
-    m_Sky[0][1]->makeHash();
-    m_Sky[0][2]->makeHash();
-    m_Sky[0][3]->makeHash();
-    m_Sky[1][4]->makeHash();
+//    m_Sky[0][0]->makeHash();
+//    m_Sky[0][1]->makeHash();
+//    m_Sky[0][2]->makeHash();
+//    m_Sky[0][3]->makeHash();
+//    m_Sky[1][4]->makeHash();
     m_Sky[0][6]->makeHash();
   }
 
@@ -106,17 +106,19 @@ public:
     // move next frame
     for (int i = skySize - 1; i > -1 ; i--)
     {
-      for (int j = skySize - 1; j > -1; j--)
+      for (int j = skySize - 1; j > 0; j--)
       {
         if (m_Sky[i][j]->getState() == " # ")
         {
           // Fix starts move downward after one complete cycle
           m_Sky[i][j]->makeDot();
           m_Sky[i][j+1]->makeHash();
+          std::cout << i << " " << j+1 << std::endl;
+
         }
       }
     }
-    logSky();
+//    logSky();
   }
 };
 //
@@ -132,15 +134,16 @@ public:
 int main()
 {
   Sky sky{};
-  sky.createSun();
+//  sky.createSun();
   sky.logSky();
-  for (int i = 0; i < 200; i++)
+  for (int i = 0; i < 15; i++)
   {
 //    nextFrame(&sky);
     using namespace std::chrono_literals;
     std::this_thread::sleep_for(250ms);
     sky.nextFrame();
   }
+  sky.logSky();
 }
 
 
