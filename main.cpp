@@ -139,8 +139,8 @@ int main()
   for (int i = 0; i < 15; i++)
   {
 //    nextFrame(&sky);
-    using namespace std::chrono_literals;
-    std::this_thread::sleep_for(250ms);
+//    using namespace std::chrono_literals;
+//    std::this_thread::sleep_for(250ms);
     sky.nextFrame();
   }
   sky.logSky();
