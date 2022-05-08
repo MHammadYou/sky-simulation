@@ -76,6 +76,15 @@ public:
     }
   }
 
+  void createMoon()
+  {
+    m_Sky[1][6]->makeHash();
+    m_Sky[1][7]->makeHash();
+    m_Sky[2][7]->makeHash();
+    m_Sky[3][7]->makeHash();
+    m_Sky[3][6]->makeHash();
+  }
+
   void logSky()
   {
     std::cout << " ";
@@ -143,6 +152,7 @@ int main()
 //    std::this_thread::sleep_for(250ms);
     sky.nextFrame();
   }
+  sky.createMoon();
   sky.logSky();
 }
 
