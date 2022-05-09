@@ -152,7 +152,7 @@ int main()
 //    std::this_thread::sleep_for(250ms);
     sky.nextFrame();
   }
-  sky.createMoon();
+//  sky.createMoon();
   sky.logSky();
 }
 
