@@ -57,11 +57,11 @@ public:
       }
     }
 
-//    m_Sky[0][0]->makeHash();
-//    m_Sky[0][1]->makeHash();
-//    m_Sky[0][2]->makeHash();
-//    m_Sky[0][3]->makeHash();
-//    m_Sky[1][4]->makeHash();
+    m_Sky[0][0]->makeHash();
+    m_Sky[0][1]->makeHash();
+    m_Sky[0][2]->makeHash();
+    m_Sky[0][3]->makeHash();
+    m_Sky[1][4]->makeHash();
     m_Sky[0][6]->makeHash();
   }
 
