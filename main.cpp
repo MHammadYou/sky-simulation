@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <map>
 
 
 class Cell
@@ -35,6 +36,14 @@ public:
   void makeHash()
   {
     setState(" # ");
+  }
+
+  std::map<std::string, int> getPos()
+  {
+    std::map<std::string, int> pos;
+    pos.insert(std::pair<std::string, int>("x", m_X));
+    pos.insert(std::pair<std::string, int>("y", m_Y));
+    return pos;
   }
 };
 
