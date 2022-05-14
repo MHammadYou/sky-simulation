@@ -66,11 +66,11 @@ public:
       }
     }
 
-    m_Sky[0][0]->makeHash();
-    m_Sky[0][1]->makeHash();
-    m_Sky[0][2]->makeHash();
-    m_Sky[0][3]->makeHash();
-    m_Sky[1][4]->makeHash();
+//    m_Sky[0][0]->makeHash();
+//    m_Sky[0][1]->makeHash();
+//    m_Sky[0][2]->makeHash();
+//    m_Sky[0][3]->makeHash();
+//    m_Sky[1][4]->makeHash();
     m_Sky[0][6]->makeHash();
   }
 
@@ -136,7 +136,7 @@ public:
         }
       }
     }
-//    logSky();
+    logSky();
   }
 };
 //
@@ -154,11 +154,8 @@ int main()
   Sky sky{};
 //  sky.createSun();
   sky.logSky();
-  for (int i = 0; i < 15; i++)
+  for (int i = 0; i < 25; i++)
   {
-//    nextFrame(&sky);
-//    using namespace std::chrono_literals;
-//    std::this_thread::sleep_for(250ms);
     sky.nextFrame();
   }
 //  sky.createMoon();
