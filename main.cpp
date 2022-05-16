@@ -2,6 +2,7 @@
 #include <chrono>
 #include <thread>
 #include <map>
+#include <vector>
 
 
 class Cell
@@ -52,7 +53,7 @@ public:
 class Sky
 {
 private:
-  static const int skySize = 20;
+  static const int skySize = 10;
   Cell* m_Sky[skySize][skySize]{};
 
 public:
@@ -123,26 +124,55 @@ public:
 
   void nextFrame()
   {
-    // move next frame
+    for (std::map<std::string, int> star: getStarts())
+    {
+//      std::cout << star["x"] << " " << star["y"] << std::endl;
+      m_Sky[star["x"]][star["y"]]->makeDot();
+      m_Sky[star["x"]][star["y"]+1]->makeHash();
+      logSky();
+    }
+  }
+
+//  void nextFrame()
+//  {
+//    // move next frame
+//    for (int i = skySize - 1; i > -1 ; i--)
+//    {
+//      for (int j = skySize - 1; j > -1; j--)
+//      {
+//        if (m_Sky[i][j]->getState() == " # ")
+//        {
+//
+//          if (j + 1 != skySize) {
+//            m_Sky[i][j]->makeDot();
+//            m_Sky[i][j+1]->makeHash();
+//          } else {
+//            m_Sky[i][0]->makeHash();
+//            m_Sky[i][j]->makeDot();
+//            logSky();
+//          }
+//        }
+//      }
+//    }
+//    logSky();
+//  }
+
+  std::vector<std::map<std::string, int>> getStarts()
+  {
+    std::vector<std::map<std::string, int>> stars;
+
     for (int i = skySize - 1; i > -1 ; i--)
     {
       for (int j = skySize - 1; j > -1; j--)
       {
         if (m_Sky[i][j]->getState() == " # ")
         {
-
-          if (j + 1 != skySize) {
-            m_Sky[i][j]->makeDot();
-            m_Sky[i][j+1]->makeHash();
-          } else {
-            m_Sky[i][0]->makeHash();
-            m_Sky[i][j]->makeDot();
-            logSky();
-          }
+          stars.push_back(m_Sky[i][j]->getPos());
         }
       }
     }
-    logSky();
+
+    return stars;
   }
 };
 //
@@ -155,9 +185,9 @@ void nextFrame(Sky* sky)
 int main()
 {
   Sky sky{};
-  sky.createSun();
+//  sky.createSun();
   sky.logSky();
-  for (int i = 0; i < 26; i++)
+  for (int i = 0; i < 5; i++)
   {
 //    sky.nextFrame();
     nextFrame(&sky);
