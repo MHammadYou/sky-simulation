@@ -48,8 +48,6 @@ public:
   }
 };
 
-
-
 class Sky
 {
 private:
@@ -151,15 +149,9 @@ public:
         }
       }
     }
-
     return stars;
   }
 };
-
-void nextFrame(Sky* sky)
-{
-  sky->nextFrame();
-}
 
 int main()
 {
@@ -169,7 +161,7 @@ int main()
   for (int i = 0; i < 100; i++)
   {
 //    sky.nextFrame();
-    nextFrame(&sky);
+      sky.nextFrame();
   }
 
 //  sky.createMoon();
