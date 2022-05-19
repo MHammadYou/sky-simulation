@@ -51,7 +51,7 @@ public:
 class Sky
 {
 private:
-  static const int skySize = 25;
+  static const int skySize = 10;
   Cell* m_Sky[skySize][skySize]{};
 
 public:
@@ -65,12 +65,16 @@ public:
       }
     }
 
-    m_Sky[0][0]->makeHash();
-    m_Sky[0][1]->makeHash();
-    m_Sky[0][2]->makeHash();
-    m_Sky[0][3]->makeHash();
-    m_Sky[1][4]->makeHash();
-    m_Sky[0][6]->makeHash();
+//    m_Sky[0][0]->makeHash();
+//    m_Sky[0][1]->makeHash();
+//    m_Sky[0][2]->makeHash();
+//    m_Sky[0][3]->makeHash();
+//    m_Sky[1][4]->makeHash();
+//    m_Sky[0][6]->makeHash();
+      m_Sky[0][1]->makeHash();
+      m_Sky[0][2]->makeHash();
+      m_Sky[0][3]->makeHash();
+
   }
 
   void createSun()
@@ -131,8 +135,8 @@ public:
         m_Sky[star["x"]][star["y"]]->makeDot();
         m_Sky[star["x"]][0]->makeHash();
       }
+      logSky();
     }
-    logSky();
   }
 
   std::vector<std::map<std::string, int>> getStarts()
@@ -156,7 +160,7 @@ public:
 int main()
 {
   Sky sky{};
-  sky.createSun();
+//  sky.createSun();
   sky.logSky();
   for (int i = 0; i < 100; i++)
   {
