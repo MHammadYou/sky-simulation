@@ -160,16 +160,11 @@ public:
 int main()
 {
   Sky sky{};
-//  sky.createSun();
   sky.logSky();
   for (int i = 0; i < 100; i++)
   {
-//    sky.nextFrame();
       sky.nextFrame();
   }
-
-//  sky.createMoon();
-//  sky.logSky();
 }
 
 
